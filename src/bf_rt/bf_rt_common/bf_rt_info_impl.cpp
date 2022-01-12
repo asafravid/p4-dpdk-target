@@ -1976,7 +1976,7 @@ BfRtInfoImpl::BfRtInfoImpl(const bf_dev_id_t &dev_id,
     : program_config_(program_config) {
   if (program_config_.bfrtInfoFilePathVect_.empty()) {
     LOG_CRIT("Unable to find any BfRt Json File");
-    throw fileOpenFailException();
+    // throw fileOpenFailException(); -> Avoid ovs-vswitchd exit on arm64
   }
   // I: Parse bf_rt.json
   for (auto const &bfrtInfoFilePath : program_config_.bfrtInfoFilePathVect_) {
